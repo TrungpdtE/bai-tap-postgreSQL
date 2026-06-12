@@ -114,7 +114,23 @@ WHERE id = (
         FROM orders
     )
 );
-
+----------------------
+SELECT u.name, o.total
+FROM users u
+JOIN orders o
+ON u.id = o.user_id
+WHERE o.total = (
+    SELECT MAX(total)
+    FROM orders
+);
+----------------------
+SELECT u.name, o.total
+FROM users u
+JOIN orders o
+ON u.id = o.user_id
+ORDER BY o.total DESC
+LIMIT 1;
+--------------------
 -- Bài 16
 SELECT *
 FROM users
